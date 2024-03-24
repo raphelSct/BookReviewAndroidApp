@@ -15,7 +15,7 @@ Rendu
 -----
 
 - Quand ? **le 8 avril à 0h00** (ou le 7 avril à 24h00, au choix)
-- Où ? Sur votre dépôt Git, fork de https://git.unistra.fr/p42/abc
+- Où ? Sur votre dépôt Git.
 - Quoi ?
     - Le code de l'application
     - Un rapport expliquant votre architecture, ce qui est censé fonctionner et ne pas fonctionner, les difficultés que vous avez rencontré.
