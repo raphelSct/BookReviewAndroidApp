@@ -3,6 +3,14 @@ Projet ABC - Android Books Client
 
 L'objectif de ce projet est de réaliser un client mobile pour l'API Books développée dans le module W41, dont [une correction minimale est disponible ici](https://git.unistra.fr/w412/w41/-/tree/main/correction).
 
+Préparation du dépôt
+--------------------
+
+1. Créez un groupe Gitlab nommé **`nom1-nom2`** où `nom1` et `nom2` sont les noms de famille des deux membres du binôme.
+1. Forkez le dépôt https://git.unistra.fr/p42/p42-abc dans le groupe créé ci-dessus **en conservant l'URL p42-abc**.
+1. **Passez ce dépôt en privé.**
+1. Ajoutez votre enseignant de TD/TP comme Reporter de votre dépôt.
+
 Rendu
 -----
 
