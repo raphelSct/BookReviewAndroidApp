@@ -4,6 +4,7 @@ import { assert } from 'superstruct';
 import { BookCreationData } from '../validation/book';
 import { BookUpdateData } from '../validation/book';
 import { Prisma } from "@prisma/client";
+import { log } from "console";
 
 
 export async function get_all(req: Request, res: Response) {
@@ -23,7 +24,7 @@ export async function get_all(req: Request, res: Response) {
       include : assoc,
       orderBy : {
         title : 'asc'
-      }
+      } 
     });   
     res.json({books});  
 };

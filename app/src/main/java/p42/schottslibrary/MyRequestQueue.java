@@ -24,4 +24,11 @@ public class MyRequestQueue {
     public <T> void add(Request<T> req) {
         requestQueue.add(req);
     }
+
+    public RequestQueue getRequestQueue() {
+        if (requestQueue == null) {
+            throw new IllegalStateException("RequestQueue has not been initialized.");
+        }
+        return requestQueue;
+    }
 }

@@ -11,19 +11,22 @@ public class Book {
     private int id;
     private String title;
     private int authorId;
-    private Year publicationYear;
     private List<Tag> tags;
     private List<Comment> comments;
     private List<Rating> ratings;
 
-    public Book(int id, String title, int authorId, Year publicationYear, List<Tag> tags, List<Comment> comments, List<Rating> ratings){
+    public Book(int id, String title, int authorId, List<Tag> tags, List<Comment> comments, List<Rating> ratings){
         this.id=id;
         this.title=title;
         this.authorId=authorId;
-        this.publicationYear=publicationYear;
         this.tags=tags;
         this.comments=comments;
         this.ratings=ratings;
+    }
+    public Book(int id, String title, int authorId){
+        this.id=id;
+        this.title=title;
+        this.authorId=authorId;
     }
 
     // Getter pour l'attribut 'id'
@@ -57,14 +60,9 @@ public class Book {
     }
 
     // Getter pour l'attribut 'publicationYear'
-    public Year getPublicationYear() {
-        return publicationYear;
-    }
+
 
     // Setter pour l'attribut 'publicationYear'
-    public void setPublicationYear(Year publicationYear) {
-        this.publicationYear = publicationYear;
-    }
     public void addComment(Comment comment){
         this.comments.add(comment);
     }
