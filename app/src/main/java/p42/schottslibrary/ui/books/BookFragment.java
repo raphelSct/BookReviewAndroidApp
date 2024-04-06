@@ -9,16 +9,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import p42.schottslibrary.MainActivity;
 import p42.schottslibrary.MyRequestQueue;
+import p42.schottslibrary.OnItemClickListener;
 import p42.schottslibrary.R;
 import p42.schottslibrary.models.Book;
 
-public class BookFragment extends Fragment {
+public class BookFragment extends Fragment implements OnItemClickListener {
     private BookAdapter bAdapter;
 
     private RecyclerView recyclerView;
@@ -46,6 +49,7 @@ public class BookFragment extends Fragment {
                     bAdapter = new BookAdapter(books);
                     // Set adapter to RecyclerView
                     recyclerView.setAdapter(bAdapter);
+                    bAdapter.setClickListener(this);
                 }
         );
     }
@@ -53,5 +57,19 @@ public class BookFragment extends Fragment {
         @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @Override
+    public void onClick(View view, int position) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        BookDescFragment fragment = BookDescFragment.newInstance();
+
+        // Définissez la position sur le fragment
+        fragment.setPosition(position);
+
+        // Remplacez le fragment en utilisant la transaction
+        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, fragment);        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

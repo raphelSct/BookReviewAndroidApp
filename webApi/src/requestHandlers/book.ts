@@ -12,12 +12,19 @@ export async function get_all(req: Request, res: Response) {
     author: {
       select: { id: true, firstname: true,lastname: true },
       
+    },
+    tags : {
+      select : {name:true},
+    },
+    comments : {
+      select : {userId : true, content:true, bookId:true}
+    },
+    ratings : {
+      select : { value : true, bookId:true, userId : true}
     }
   };
   const { title }: { title?: string } = req.query
     const books=await prisma.book.findMany({
-      skip: 1,
-      take:2,
       where : {
         title : { contains : title || undefined}
       },
@@ -30,10 +37,26 @@ export async function get_all(req: Request, res: Response) {
 };
 
 export async function get_one(req: Request, res: Response) {
+  const assoc: Prisma.BookInclude = {
+    author: {
+      select: { id: true, firstname: true,lastname: true },
+      
+    },
+    tags : {
+      select : {name:true},
+    },
+    comments : {
+      select : {userId : true, content:true, bookId:true}
+    },
+    ratings : {
+      select : { value : true, bookId:true, userId : true}
+    }
+  };
     const book = await prisma.book.findUnique({
         where: {
           id: Number(req.params.book_id),
         },
+        include : assoc,
       })
     if(book==null) {
         res.status(404).send(' 404 Author not found');

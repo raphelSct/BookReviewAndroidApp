@@ -27,17 +27,22 @@ public class BookViewModel extends AndroidViewModel {
 
     private BookRepository repository = new BookRepository(this.getApplication());
     private MutableLiveData<List<Book>> books = new MutableLiveData<>();
-    public MutableLiveData<List<Book>> getBooks() {
-        repository.getAllBooks(books);
-        return books;
-    }
-
+    private MutableLiveData<Book> book = new MutableLiveData<>();
 
     public BookViewModel(@NonNull Application application) throws JSONException, IOException {
         super(application);
         books = new MutableLiveData<List<Book>>();
+        book = new MutableLiveData<Book>();
 
+    }
 
+    public MutableLiveData<List<Book>> getBooks() {
+        repository.getAllBooks(books);
+        return books;
+    }
+    public MutableLiveData<Book> getOneBook(int bookId) {
+        repository.getOneBook(book,bookId);
+        return book;
     }
 
 }
