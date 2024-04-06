@@ -13,6 +13,10 @@ public class Tag {
         this.name=name;
         this.books=new ArrayList<>();
     }
+    public Tag(String name){
+        this.name=name;
+        this.books=new ArrayList<>();
+    }
     // Getter pour l'attribut 'id'
     public int getId() {
         return id;

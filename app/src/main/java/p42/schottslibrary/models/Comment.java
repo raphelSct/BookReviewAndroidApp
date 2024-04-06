@@ -18,6 +18,11 @@ public class Comment {
         this.userId=userId;
         this.bookId=bookId;
     }
+    public Comment(String content){
+
+        this.content=content;
+
+    }
     // Getter pour l'attribut 'id'
     public int getId() {
         return id;

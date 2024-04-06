@@ -44,9 +44,9 @@ public class BookDescFragment extends Fragment {
         bookViewModel.getOneBook(mPosition).observe(getViewLifecycleOwner(),book -> {
             Log.d("book",book.toString());
             title.setText("oui");
-            author.setText(book.getAuthor());
-            tags.setText(book.getSeries());
-            comments.setText(book.getQuote());
+            //author.setText(book.getAuthor());
+            //tags.setText(book.getSeries());
+            //comments.setText(book.getQuote());
             rating.setText("non");
         });
     }

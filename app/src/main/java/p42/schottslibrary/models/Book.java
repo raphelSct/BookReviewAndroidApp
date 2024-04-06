@@ -10,23 +10,24 @@ import java.util.Random;
 public class Book {
     private int id;
     private String title;
-    private int authorId;
+    private Author author;
     private List<Tag> tags;
     private List<Comment> comments;
     private List<Rating> ratings;
+    private double averageRating;
 
-    public Book(int id, String title, int authorId, List<Tag> tags, List<Comment> comments, List<Rating> ratings){
+    public Book(int id, String title, Author author, List<Tag> tags, List<Comment> comments, List<Rating> ratings){
         this.id=id;
         this.title=title;
-        this.authorId=authorId;
+        this.author=author;
         this.tags=tags;
         this.comments=comments;
         this.ratings=ratings;
     }
-    public Book(int id, String title, int authorId){
+    public Book(int id, String title){
         this.id=id;
         this.title=title;
-        this.authorId=authorId;
+
     }
 
     // Getter pour l'attribut 'id'
@@ -49,20 +50,7 @@ public class Book {
         this.title = title;
     }
 
-    // Getter pour l'attribut 'authorId'
-    public int getAuthorId() {
-        return authorId;
-    }
 
-    // Setter pour l'attribut 'authorId'
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
-
-    // Getter pour l'attribut 'publicationYear'
-
-
-    // Setter pour l'attribut 'publicationYear'
     public void addComment(Comment comment){
         this.comments.add(comment);
     }

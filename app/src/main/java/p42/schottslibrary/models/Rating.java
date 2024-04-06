@@ -12,6 +12,9 @@ public class Rating {
         this.userId=userId;
         this.bookId=bookId;
     }
+    public Rating(int value){
+        this.value=value;
+    }
     public int getId() {
         return id;
     }

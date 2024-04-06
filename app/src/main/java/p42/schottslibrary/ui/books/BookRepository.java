@@ -6,7 +6,11 @@ import androidx.lifecycle.MutableLiveData;
 
 
 import p42.schottslibrary.MyRequestQueue;
+import p42.schottslibrary.models.Author;
 import p42.schottslibrary.models.Book;
+import p42.schottslibrary.models.Comment;
+import p42.schottslibrary.models.Rating;
+import p42.schottslibrary.models.Tag;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -48,10 +52,10 @@ public class BookRepository {
                                 JSONObject livreUnique = arr.getJSONObject(i);
                                 int id = livreUnique.getInt("id");
                                 String title = livreUnique.getString("title");
-                                int authorId = livreUnique.getInt("authorId");
 
 
-                                Book book = new Book(id, title, authorId);
+
+                                Book book = new Book(id, title);
                                 booksList.add(book);
                             }
                         } catch (JSONException e) {
@@ -74,32 +78,43 @@ public class BookRepository {
 
     public void getOneBook(MutableLiveData<Book> foundBook,int bookId) {
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(
+
                 Request.Method.GET,
                 apiURL + "books/"+bookId,
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
+                        Author author;
+                        List<Tag> tags=new ArrayList<>();
+                        List<Comment> comments=new ArrayList<>();
+                        List<Rating> ratings=new ArrayList<>();
                         Log.d("Repository", response.toString());
                         try {
-                            JSONArray arr=response.getJSONArray("books");
+                            String titre=response.getString("title");
+                            JSONObject bookAuthor=response.getJSONObject("author");
+                            JSONArray bookComment=response.getJSONArray("comments");
+                            JSONArray bookTags=response.getJSONArray("tags");
+                            JSONArray bookRatings=response.getJSONArray("ratings");
 
-                            for (int i = 0; i < arr.length(); i++) {
-                                JSONObject livreUnique = arr.getJSONObject(i);
-                                int id = livreUnique.getInt("id");
-                                String title = livreUnique.getString("title");
-                                int authorId = livreUnique.getInt("authorId");
-
-
-                                Book book = new Book(id, title, authorId);
-                                booksList.add(book);
+                            author=new Author(bookAuthor.getInt("id"),bookAuthor.getString("firstname"),bookAuthor.getString("lastname"));
+                            for(int i=0;i<bookTags.length();i++){
+                                tags.add(new Tag(bookTags.getJSONObject(i).getString("name")));
                             }
+                            for(int i=0;i<bookComment.length();i++){
+                                comments.add(new Comment(bookComment.getJSONObject(i).getString("content")));
+                            }
+                            for(int i=0;i<bookRatings.length();i++){
+                                ratings.add(new Rating(bookTags.getJSONObject(i).getInt("value")));
+                            }
+                            Book book=new Book(response.getInt("id"),titre,author,tags,comments,ratings);
+                            foundBook.setValue(book);
+
+
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
-                        Log.d("Repository", booksList.toString());
-                        foundBooks.setValue(booksList);
+
                     }
                 },
                 new Response.ErrorListener() {

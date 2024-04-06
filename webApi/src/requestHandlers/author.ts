@@ -42,12 +42,9 @@ export async function get_all(req: Request, res: Response) {
           orderBy : {
             title : 'asc'
           },
-        skip: 1,
-        take:2,
+        
       
     }},
-    skip: 0,
-    take:2,
     orderBy : {
       lastname : 'asc'
     }
