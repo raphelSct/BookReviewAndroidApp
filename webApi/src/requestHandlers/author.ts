@@ -15,12 +15,10 @@ export async function get_all(req: Request, res: Response) {
   const assoc: Prisma.AuthorInclude = {
     books: {
       select: { id: true, title: true },
-      orderBy: { title: 'asc' }
+      orderBy: { title: 'asc' } 
     }
   };
-    
     const filter: Prisma.AuthorWhereInput = {};
-
     if (hasBooks === 'true') {
         filter.books = {
             some: {} // Filtre pour récupérer les auteurs ayant au moins un livre associé
@@ -42,8 +40,6 @@ export async function get_all(req: Request, res: Response) {
           orderBy : {
             title : 'asc'
           },
-        
-      
     }},
     orderBy : {
       lastname : 'asc'

@@ -60,4 +60,7 @@ public class Author {
     public void addBook(Book book){
         this.books.add(book);
     }
+    public String getFullName(){
+        return firstname+" "+lastname;
+    }
 }
