@@ -57,4 +57,20 @@ public class Book {
     public void addRating(Rating rating){
         this.ratings.add(rating);
     }
+
+    public Author getAuthor() {
+        return this.author;
+    }
+
+    public List<Tag> getTags() {
+        return this.tags;
+    }
+
+    public List<Comment> getComments() {
+        return this.comments;
+    }
+
+    public List<Rating> getRatings() {
+        return this.ratings;
+    }
 }

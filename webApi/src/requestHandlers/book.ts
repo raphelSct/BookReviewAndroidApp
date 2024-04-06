@@ -30,7 +30,7 @@ export async function get_all(req: Request, res: Response) {
       },
       include : assoc,
       orderBy : {
-        title : 'asc'
+        id : 'asc'
       } 
     });   
     res.json({books});  

@@ -2,6 +2,7 @@ package p42.schottslibrary.ui.books;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import p42.schottslibrary.R;
+import p42.schottslibrary.models.Comment;
+import p42.schottslibrary.models.Rating;
+import p42.schottslibrary.models.Tag;
 
 public class BookDescFragment extends Fragment {
 
@@ -31,6 +37,7 @@ public class BookDescFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_book_desc, container, false);
     }
 
+    @SuppressLint("SetTextI18n")
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
@@ -41,14 +48,34 @@ public class BookDescFragment extends Fragment {
         TextView comments=view.findViewById(R.id.comments);
         TextView rating=view.findViewById(R.id.rating);
 
-        /*bookViewModel.getOneBook(mPosition).observe(getViewLifecycleOwner(),book -> {
+        bookViewModel.getOneBook(mPosition).observe(getViewLifecycleOwner(),book -> {
+
             Log.d("book",book.toString());
-            title.setText("oui");
-            //author.setText(book.getAuthor());
-            //tags.setText(book.getSeries());
-            //comments.setText(book.getQuote());
-            rating.setText("non");
-        });*/
+
+            title.setText(book.getTitle());
+            author.setText(book.getAuthor().getFirstname()+" "+book.getAuthor().getLastname());
+
+            List<Tag> temptags=book.getTags();
+            StringBuilder dumpstr= new StringBuilder();
+            for(int i=0;i<temptags.size();i++){
+                dumpstr.append(temptags.get(i).getName()).append(" ");
+            }
+            tags.setText(dumpstr);
+
+            List<Comment> tempcomments=book.getComments();
+            dumpstr=new StringBuilder();
+            for(int i=0;i<tempcomments.size();i++){
+                dumpstr.append(tempcomments.get(i).getContent()).append(" ");
+            }
+            comments.setText(dumpstr);
+
+            List<Rating> temprates=book.getRatings();
+            dumpstr= new StringBuilder();
+            for(int i=0;i<temprates.size();i++){
+                dumpstr.append(temprates.get(i).getValue()).append(" ");
+            }
+            rating.setText(dumpstr);
+        });
     }
 
     public void setPosition(int position) {

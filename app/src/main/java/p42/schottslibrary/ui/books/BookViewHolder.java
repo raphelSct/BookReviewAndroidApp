@@ -18,6 +18,7 @@ public class BookViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         super(itemView);
         titre=itemView.findViewById(R.id.tit);
         this.clickListener=clickListener;
+        itemView.setOnClickListener(this);
     }
 
     public TextView getTitre(){

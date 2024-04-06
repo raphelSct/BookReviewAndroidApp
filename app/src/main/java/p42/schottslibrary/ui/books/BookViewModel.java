@@ -41,7 +41,7 @@ public class BookViewModel extends AndroidViewModel {
         return books;
     }
     public MutableLiveData<Book> getOneBook(int bookId) {
-        repository.getOneBook(book,bookId);
+        repository.getOneBook(book,bookId+1);
         return book;
     }
 

@@ -89,13 +89,16 @@ public class BookRepository {
                         List<Tag> tags=new ArrayList<>();
                         List<Comment> comments=new ArrayList<>();
                         List<Rating> ratings=new ArrayList<>();
+
                         Log.d("Repository", response.toString());
                         try {
-                            String titre=response.getString("title");
-                            JSONObject bookAuthor=response.getJSONObject("author");
-                            JSONArray bookComment=response.getJSONArray("comments");
-                            JSONArray bookTags=response.getJSONArray("tags");
-                            JSONArray bookRatings=response.getJSONArray("ratings");
+                            JSONObject jsonObject=response.getJSONObject("book");
+                            String titre=jsonObject.getString("title");
+                            JSONObject bookAuthor=jsonObject.getJSONObject("author");
+                            Log.d("Repository", bookAuthor.toString());
+                            JSONArray bookComment=jsonObject.getJSONArray("comments");
+                            JSONArray bookTags=jsonObject.getJSONArray("tags");
+                            JSONArray bookRatings=jsonObject.getJSONArray("ratings");
 
                             author=new Author(bookAuthor.getInt("id"),bookAuthor.getString("firstname"),bookAuthor.getString("lastname"));
                             for(int i=0;i<bookTags.length();i++){
@@ -107,7 +110,7 @@ public class BookRepository {
                             for(int i=0;i<bookRatings.length();i++){
                                 ratings.add(new Rating(bookTags.getJSONObject(i).getInt("value")));
                             }
-                            Book book=new Book(response.getInt("id"),titre,author,tags,comments,ratings);
+                            Book book=new Book(jsonObject.getInt("id"),titre,author,tags,comments,ratings);
                             foundBook.setValue(book);
 
 
