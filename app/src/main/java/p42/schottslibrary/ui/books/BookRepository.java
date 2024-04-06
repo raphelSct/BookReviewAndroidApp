@@ -73,7 +73,7 @@ public class BookRepository {
     }
 
     public void getOneBook(MutableLiveData<Book> foundBook,int bookId) {
-        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(
+        /*JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 apiURL + "books/"+bookId,
                 null,
@@ -110,6 +110,6 @@ public class BookRepository {
                 }
         );
 
-        requestQueue.add(jsonArrayRequest);
+        requestQueue.add(jsonArrayRequest);*/
     }
 }
