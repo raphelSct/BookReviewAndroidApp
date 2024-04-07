@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +26,9 @@ import org.json.JSONObject;
 
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class BookRepository {
@@ -129,5 +132,35 @@ public class BookRepository {
         );
 
         requestQueue.add(jsonArrayRequest);
+    }
+
+    public void createBook(int authorId,String title){
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("authorId", authorId);
+            jsonObject.put("title", title);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST,
+                apiURL + "authors/"+authorId+"/books",
+                jsonObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
+                        System.out.println("Author created");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        System.out.println("Error creating author"+jsonObject+apiURL + "authors/"+authorId+"/books");
+                    }
+                }
+        );
+
+        requestQueue.add(jsonObjectRequest);
     }
 }

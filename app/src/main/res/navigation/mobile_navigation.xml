@@ -17,6 +17,9 @@
             android:name="position"
             app:argType="integer" />
             </action>
+        <action
+            android:id="@+id/action_navigation_home_to_bookCreationFragment"
+            app:destination="@id/bookCreationFragment" />
     </fragment>
 
     <fragment
@@ -27,6 +30,9 @@
         <action
             android:id="@+id/action_navigation_dashboard_to_booksAuthorFragment"
             app:destination="@id/booksAuthorFragment" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_authorCreationFragment"
+            app:destination="@id/authorCreationFragment" />
     </fragment>
 
 
@@ -48,5 +54,15 @@
                 app:argType="integer" />
         </action>
     </fragment>
+    <fragment
+        android:id="@+id/bookCreationFragment"
+        android:name="p42.schottslibrary.ui.books.BookCreationFragment"
+        android:label="fragment_book_creation"
+        tools:layout="@layout/fragment_book_creation" />
+    <fragment
+        android:id="@+id/authorCreationFragment"
+        android:name="p42.schottslibrary.ui.authors.AuthorCreationFragment"
+        android:label="fragment_author_creation"
+        tools:layout="@layout/fragment_author_creation" />
 
 </navigation>

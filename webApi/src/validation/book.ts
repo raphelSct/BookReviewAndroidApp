@@ -1,11 +1,12 @@
-import { object, string, size } from 'superstruct';
+import { title } from 'process';
+import { object, string, size, integer, number } from 'superstruct';
 
 export const BookCreationData = object({
-  firstname: size(string(), 1, 50),
-  lastname: size(string(), 1, 50),
+  title: size(string(), 1, 50),
+  
 });
 
 export const BookUpdateData = object({
-    firstname: size(string(), 1, 50),
-    lastname: size(string(), 1, 50),
+    title: size(string(), 1, 50),
+    
   });

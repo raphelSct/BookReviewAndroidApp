@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.books.BookCreationFragment" >
+
+    <EditText
+        android:id="@+id/newTitle"
+        android:layout_width="268dp"
+        android:layout_height="65dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Book title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/bookAuthor"
+        android:layout_width="271dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newTitle" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="134dp"
+        android:layout_height="69dp"
+        android:text="Create"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authorLN" />
+
+    <EditText
+        android:id="@+id/auhtoFN"
+        android:layout_width="258dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Author firstname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookAuthor" />
+
+    <EditText
+        android:id="@+id/authorLN"
+        android:layout_width="275dp"
+        android:layout_height="58dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Lastname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/auhtoFN" />
+</androidx.constraintlayout.widget.ConstraintLayout>

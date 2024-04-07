@@ -37,4 +37,9 @@ public class AuthorViewModel extends AndroidViewModel {
         repository.getAllBooks(books,authorId+1);
         return books;
     }
+
+    public LiveData<List<Author>> createAuthor(String firstname, String lastname) {
+        repository.createAuthor(firstname,lastname);
+        return authors;
+    }
 }

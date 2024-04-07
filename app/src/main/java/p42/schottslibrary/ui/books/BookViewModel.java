@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import p42.schottslibrary.R;
+import p42.schottslibrary.models.Author;
 import p42.schottslibrary.models.Book;
 
 public class BookViewModel extends AndroidViewModel {
@@ -42,6 +43,11 @@ public class BookViewModel extends AndroidViewModel {
     }
     public MutableLiveData<Book> getOneBook(int bookId) {
         repository.getOneBook(book,bookId+1);
+        return book;
+    }
+    public MutableLiveData<Book> createBook(Author author, String title) {
+
+        repository.createBook(author.getId(),title);
         return book;
     }
 

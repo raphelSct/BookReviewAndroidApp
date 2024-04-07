@@ -86,10 +86,10 @@ export async function get_all_of_author(req: Request, res: Response) {
 };
 
 export async function create_one_of_author(req: Request, res: Response) {
-    assert(req.body, BookCreationData);
+    
     const books= await prisma.book.create({
         data : {
-            title : 'Les miserables',
+            title : req.body.title,
             authorId : Number(req.params.author_id)
         }
     })   

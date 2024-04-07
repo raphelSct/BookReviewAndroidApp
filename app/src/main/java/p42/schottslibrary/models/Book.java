@@ -61,6 +61,9 @@ public class Book {
     public Author getAuthor() {
         return this.author;
     }
+    public void setAuthor(Author author){
+        this.author=author;
+    }
 
     public List<Tag> getTags() {
         return this.tags;

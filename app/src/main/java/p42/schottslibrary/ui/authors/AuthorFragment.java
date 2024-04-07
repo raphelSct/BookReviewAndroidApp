@@ -15,6 +15,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import p42.schottslibrary.OnItemClickListener;
 import p42.schottslibrary.R;
 import p42.schottslibrary.models.Author;
@@ -49,6 +51,15 @@ public class AuthorFragment extends Fragment implements OnItemClickListener {
                     authorAdapter.setClickListener(this);
                 }
         );
+        FloatingActionButton fab = view.findViewById(R.id.fabAuthor);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //ajouter le fragment "BookCreateFragment"
+                Navigation.findNavController(view).navigate(R.id.authorCreationFragment);
+
+            }
+        });
     }
 
     @Override

@@ -112,4 +112,35 @@ public class AuthorRepository {
 
         requestQueue.add(jsonArrayRequest);
     }
+
+    public void createAuthor(String firstname, String lastname) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("firstname", firstname);
+            jsonObject.put("lastname", lastname);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST,
+                apiURL + "authors",
+                jsonObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
+                        System.out.println("Author created");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        System.out.println("Error creating author"+jsonObject);
+                    }
+                }
+        );
+
+        requestQueue.add(jsonObjectRequest);
+    }
 }
+

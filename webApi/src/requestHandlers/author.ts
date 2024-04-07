@@ -67,8 +67,8 @@ export async function create_one(req: Request, res: Response) {
     assert(req.body, AuthorCreationData);
     const authors= await prisma.author.create({
         data : {
-            firstname : 'Agatha',
-            lastname : 'Christhie',
+            firstname : req.body.firstname,
+            lastname : req.body.lastname,
         }
     })          
     res.status(201).json({authors}); 
