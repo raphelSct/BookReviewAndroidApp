@@ -74,7 +74,7 @@ export async function get_all_of_author(req: Request, res: Response) {
           title : { contains : title || undefined }
         },
         orderBy : {
-          title : 'asc'
+          id : 'asc'
         }
       })
     if(book==null) {

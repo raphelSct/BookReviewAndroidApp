@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,15 +63,10 @@ public class BookFragment extends Fragment implements OnItemClickListener {
 
     @Override
     public void onClick(View view, int position) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        BookDescFragment fragment = BookDescFragment.newInstance();
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        Bundle bundle = new Bundle();
+        bundle.putInt("position", position);
+        navController.navigate(R.id.bookDescFragment, bundle);
 
-        // Définissez la position sur le fragment
-        fragment.setPosition(position);
-
-        // Remplacez le fragment en utilisant la transaction
-        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, fragment);        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
     }
 }

@@ -14,39 +14,40 @@ import p42.schottslibrary.OnItemClickListener;
 import p42.schottslibrary.R;
 import p42.schottslibrary.models.Author;
 import p42.schottslibrary.models.Book;
-import p42.schottslibrary.ui.books.BookViewHolder;
 
-public class AuthorAdapter extends RecyclerView.Adapter<AuthorViewHolder>{
-
-    private final List<Author> authors;
+public class BooksAuthorAdapter extends RecyclerView.Adapter<BooksAuthorViewHolder>{
+    private final List<Book> books;
     private OnItemClickListener clickListener;
-    public AuthorAdapter(List<Author> auteurs){
-        authors=auteurs;
+
+
+    public BooksAuthorAdapter(List<Book> books) {
+        this.books = books;
     }
 
     @NonNull
     @Override
-    public AuthorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BooksAuthorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.author_view_holder, parent, false);
+                .inflate(R.layout.books_author_view_holder, parent, false);
 
-        return new AuthorViewHolder(view,clickListener);
+        return new BooksAuthorViewHolder(view,clickListener);
     }
+
+
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull AuthorViewHolder holder, int position) {
-        Author author=authors.get(position);
-        holder.getFirstname().setText(author.getFirstname()+"  ");
-        holder.getLastname().setText(author.getLastname());
+    public void onBindViewHolder(@NonNull BooksAuthorViewHolder holder, int position) {
+        Book book=this.books.get(position);
+        holder.getTitle().setText(book.getTitle());
+        holder.getTitle().setTag(book.getId());
     }
 
     @Override
     public int getItemCount() {
-        return authors.size();
+        return books.size();
     }
 
     public void setClickListener(OnItemClickListener itemClickListener) {
         this.clickListener = itemClickListener;
     }
-
 }

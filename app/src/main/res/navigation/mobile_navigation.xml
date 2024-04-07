@@ -9,17 +9,44 @@
         android:id="@+id/navigation_home"
         android:name="p42.schottslibrary.ui.books.BookFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_book" />
+        tools:layout="@layout/fragment_book" >
+        <action
+            android:id="@+id/action_navigation_home_to_bookDescFragment"
+            app:destination="@id/bookDescFragment">
+            <argument
+            android:name="position"
+            app:argType="integer" />
+            </action>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="p42.schottslibrary.ui.authors.AuthorFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_booksAuthorFragment"
+            app:destination="@id/booksAuthorFragment" />
+    </fragment>
+
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="p42.schottslibrary.ui.books.BookFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_book" />
+        android:id="@+id/bookDescFragment"
+        android:name="p42.schottslibrary.ui.books.BookDescFragment"
+        android:label="fragment_book_desc"
+        tools:layout="@layout/fragment_book_desc"/>
+    <fragment
+        android:id="@+id/booksAuthorFragment"
+        android:name="p42.schottslibrary.ui.authors.BooksAuthorFragment"
+        android:label="fragment_books_from_author"
+        tools:layout="@layout/fragment_books_from_author" >
+        <action
+            android:id="@+id/action_booksAuthorFragment_to_bookDescFragment"
+            app:destination="@id/bookDescFragment" >
+            <argument
+                android:name="position"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
 </navigation>

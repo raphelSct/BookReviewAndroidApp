@@ -10,15 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import p42.schottslibrary.OnItemClickListener;
 import p42.schottslibrary.R;
 import p42.schottslibrary.models.Author;
 import p42.schottslibrary.ui.books.BookAdapter;
 import p42.schottslibrary.ui.books.BookViewModel;
 
-public class AuthorFragment extends Fragment {
+public class AuthorFragment extends Fragment implements OnItemClickListener {
 
     private AuthorAdapter authorAdapter;
 
@@ -43,6 +46,7 @@ public class AuthorFragment extends Fragment {
                     authorAdapter = new AuthorAdapter(authors);
                     // Set adapter to RecyclerView
                     recyclerView.setAdapter(authorAdapter);
+                    authorAdapter.setClickListener(this);
                 }
         );
     }
@@ -50,5 +54,14 @@ public class AuthorFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @Override
+    public void onClick(View view, int position) {
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        Bundle bundle = new Bundle();
+        bundle.putInt("position", position);
+        navController.navigate(R.id.booksAuthorFragment, bundle);
+
     }
 }

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import java.util.List;
 
@@ -34,13 +35,23 @@ public class BookDescFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_book_desc, container, false);
+        View view =inflater.inflate(R.layout.fragment_book_desc, container, false);
+        Bundle args = getArguments();
+        if (args != null) {
+            // Récupérer la position depuis les arguments
+            mPosition = args.getInt("position", 0); // Utilisez une valeur par défaut si la position n'est pas présente
+        }
+
+
+        return view;
+
     }
 
     @SuppressLint("SetTextI18n")
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
+
         bookViewModel = new ViewModelProvider(this).get(BookViewModel.class);
         TextView title=view.findViewById(R.id.title);
         TextView author=view.findViewById(R.id.auhtor);
@@ -78,7 +89,4 @@ public class BookDescFragment extends Fragment {
         });
     }
 
-    public void setPosition(int position) {
-        mPosition = position;
-    }
 }

@@ -38,11 +38,11 @@ export async function get_all(req: Request, res: Response) {
           id : true,
           title : true},
           orderBy : {
-            title : 'asc'
+            id : 'asc'
           },
     }},
     orderBy : {
-      lastname : 'asc'
+      id : 'asc'
     }
   });
   res.set({integer:AuthorCount});
