@@ -55,7 +55,7 @@ Conseils
 - C'est un projet assez conséquent, l'essentiel n'est pas d'implémenter toutes les fonctionnalités mais d'**implémenter "proprement"** celles que vous aurez le temps de faire.
 
 
-Première Partie
+Deuxième Partie
 ================
 
 
