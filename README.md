@@ -1,15 +1,17 @@
 Projet ABC - Android Books Client
 =================================
 
-L'objectif de ce projet est de réaliser un client mobile pour l'API Books développée dans le module W41, dont [une correction minimale est disponible ici](https://git.unistra.fr/w412/w41/-/tree/main/correction).
+L'objectif de ce projet est de réaliser un client mobile pour l'API Books développée dans le module W41. 
+Dans ce module, nous avons aborder le développement d'une API à l'aide de NodeJs. Nous avons donc utilisé cette API pour récupérer les informations nécessaires à l'application.
+Sans cette API, l'application ne sera donc évidemment pas fonctionnelle.
 
-Préparation du dépôt
---------------------
+La première partie de ce README correspond au sujet que nous avions pour réaliser ce projet. 
+La deuxième partie correspond à une présentation du travail qui à été réalisé.
+(Le projet à été effectué en groupe de  deux personnes sur une durée d'envireon 1 mois. Il est important de prendre en compte que pendant ce mois nous avions d'autres projets d'envergure similaire à préparer en parallèle.)
 
-1. Créez un groupe Gitlab nommé **`nom1-nom2`** où `nom1` et `nom2` sont les noms de famille des deux membres du binôme.
-1. Forkez le dépôt https://git.unistra.fr/p42/p42-abc dans le groupe créé ci-dessus **en conservant l'URL p42-abc**.
-1. **Passez ce dépôt en privé.**
-1. Ajoutez votre enseignant de TD/TP comme Reporter de votre dépôt.
+
+Première Partie
+================
 
 Rendu
 -----
@@ -51,3 +53,25 @@ Conseils
 
 - Travaillez dans un premier temps avec **des données "en dur"**, sans communication avec l'API
 - C'est un projet assez conséquent, l'essentiel n'est pas d'implémenter toutes les fonctionnalités mais d'**implémenter "proprement"** celles que vous aurez le temps de faire.
+
+
+Première Partie
+================
+
+
+Je vais ici principalement montrer des captures d'écrans de l'application rendue.
+Je vous renvoie vers le fichier [Rapport.md](./Rapport.md) pour les informations concernant les fonctionnalités de l'application lors de la remise du projet.
+
+La première Capture d'écran représente la liste des auteurs : 
+
+![Liste des auteurs](./Author_list.png)
+
+Cette deuxième capture d'écran montre la vue obtenue en cliquant sur un auteur avec la liste des livres qu'il a écrit : 
+
+![Vue d'un auteur et ses livres](./Author_view.png)
+
+Enfin voici la vue d'un livre, s'affichant lorsqu'un livre est cliqué, que ce soit dans la vue d'un auteur ou la liste des livres : 
+
+![Vue d'un livre](./Book_view.png)
+
+Comme dit dans le rapport, l'applicaiton respecte l'architecture MVVM. Notre objectif était de respecter tous ses concepts et d'avoir un fond irréprochable d'un point de vue structure.
